@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل معلم | کلاسینو</title>
+    <link rel="stylesheet" href="teacher.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="brand">کلاسینو<span>.</span></div>
+        <div class="teacher-label">پنل مدیریت معلم</div>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">TEACHER DASHBOARD</p>
+                <h1>سلام، معلم عزیز! 👋</h1>
+                <p>کلاس‌های خود را از این قسمت مدیریت کنید.</p>
+            </div>
+            <div class="welcome-icon">🎓</div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>تعداد کلاس‌ها</span>
+                <strong id="totalClasses">۰</strong>
+            </div>
+            <div class="stat-card">
+                <span>وضعیت پنل</span>
+                <strong class="active-status">فعال</strong>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>ایجاد کلاس جدید</h2>
+            <p class="description">نام و زمان کلاس را وارد کنید.</p>
+
+            <form id="classForm">
+                <label for="className">نام کلاس</label>
+                <input
+                    id="className"
+                    type="text"
+                    placeholder="مثلاً ریاضی پایه نهم"
+                    required
+                >
+
+                <label for="classTime">زمان برگزاری</label>
+                <input id="classTime" type="datetime-local">
+
+                <button type="submit" class="primary-button">
+                    + ایجاد کلاس
+                </button>
+            </form>
+
+            <p id="message" role="status"></p>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <h2>کلاس‌های من</h2>
+                <span id="classCount" class="count">۰ کلاس</span>
+            </div>
+
+            <div id="classList" class="class-list"></div>
+        </section>
+
+        <section class="panel online-panel">
+            <h2>کلاس آنلاین</h2>
+            <p class="description">
+                این بخش برای آماده‌سازی کلاس تصویری است.
+            </p>
+            <button id="prepareBtn" type="button" class="secondary-button">
+                آماده‌سازی کلاس آنلاین
+            </button>
+            <p id="prepareMessage" role="status"></p>
+        </section>
+
+        <footer>
+            کلاسینو | پلتفرم آموزش آنلاین
+        </footer>
+    </main>
+
+    <script src="teacher.js"></script>
+</body>
+</html>

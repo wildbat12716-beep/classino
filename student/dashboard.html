@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل دانش‌آموز | کلاسینو</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="brand">کلاسینو<span>.</span></div>
+        <div class="student-label">پنل دانش‌آموز</div>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome panel">
+            <div>
+                <p class="eyebrow">STUDENT DASHBOARD</p>
+                <h1>سلام، دانش‌آموز عزیز! 👋</h1>
+                <p>به کلاسینو خوش آمدی؛ آماده‌ی یادگیری هستی؟</p>
+            </div>
+            <div class="welcome-icon">🎓</div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>کلاس‌های موجود</span>
+                <strong id="totalClasses">۰</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>وضعیت حساب</span>
+                <strong class="active-status">آماده یادگیری</strong>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>کلاس‌های من</h2>
+            <p class="description">
+                کلاس‌های آموزشی در این قسمت نمایش داده می‌شوند.
+            </p>
+
+            <div id="classList" class="class-list">
+                <p class="empty-state">در حال بررسی کلاس‌ها...</p>
+            </div>
+
+            <p id="message" role="status"></p>
+        </section>
+
+        <section class="panel">
+            <h2>راهنمای دانش‌آموز</h2>
+            <div class="guide-item">
+                <span>۱.</span>
+                <p>کلاس موردنظر خود را پیدا کن.</p>
+            </div>
+            <div class="guide-item">
+                <span>۲.</span>
+                <p>زمان کلاس را بررسی کن.</p>
+            </div>
+            <div class="guide-item">
+                <span>۳.</span>
+                <p>برای ورود به کلاس آنلاین آماده شو.</p>
+            </div>
+        </section>
+
+        <footer>
+            کلاسینو | یادگیری آسان، آینده روشن
+        </footer>
+
+    </main>
+
+    <script src="student.js"></script>
+</body>
+</html>

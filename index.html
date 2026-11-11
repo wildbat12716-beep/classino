@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classino | کلاسینو</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #080B0A;
+      color: #ffffff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 8%;
+      border-bottom: 1px solid #202923;
+    }
+
+    .logo {
+      color: #00A86B;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #dddddd;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 54px);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: #00A86B;
+    }
+
+    .hero p {
+      color: #b5c0b9;
+      line-height: 2;
+      max-width: 600px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 14px 28px;
+      background: #00A86B;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      width: min(100%, 1000px);
+      padding: 0 20px 60px;
+      margin: auto;
+    }
+
+    .card {
+      background: #121A14;
+      border: 1px solid #26382D;
+      border-radius: 14px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      color: #00A86B;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #8e9b92;
+      border-top: 1px solid #202923;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 18px;
+      }
+
+      nav a {
+        margin: 0 4px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Classino</div>
+    <nav>
+      <a href="#courses">دوره‌ها</a>
+      <a href="#classes">کلاس‌ها</a>
+      <a href="#contact">تماس</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>آینده یادگیری از <span>اینجا</span> شروع می‌شود</h1>
+      <p>
+        به کلاسینو خوش آمدید؛ محیطی برای یادگیری آنلاین،
+        شرکت در کلاس‌ها و ارتباط با مدرس‌ها.
+      </p>
+      <a class="button" href="#classes">شروع یادگیری</a>
+    </section>
+
+    <section class="cards" id="courses">
+      <article class="card">
+        <h3>کلاس آنلاین</h3>
+        <p>برای شرکت در جلسات آموزشی آماده شو.</p>
+      </article>
+
+      <article class="card" id="classes">
+        <h3>دوره‌های آموزشی</h3>
+        <p>دوره‌های مورد علاقه‌ات را دنبال کن.</p>
+      </article>
+
+      <article class="card">
+        <h3>پنل دانشجو</h3>
+        <p>برنامه کلاس‌ها و مسیر یادگیری خود را ببین.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer id="contact">
+    کلاسینو | یادگیری بدون محدودیت
+  </footer>
+
+</body>
+</html>

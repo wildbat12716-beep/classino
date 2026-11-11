@@ -1,0 +1,275 @@
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #080B0A;
+    --panel: #121A14;
+    --green: #00A86B;
+    --border: #26382C;
+    --white: #FFFFFF;
+    --muted: #AAB7AE;
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    background: var(--background);
+    color: var(--white);
+    direction: rtl;
+    line-height: 1.8;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 7%;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    color: var(--white);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.brand span {
+    color: var(--green);
+}
+
+.teacher-label {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.container {
+    width: min(100% - 32px, 1000px);
+    margin: 35px auto;
+}
+
+.welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(135deg, #14271B, #121A14);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 22px;
+}
+
+.eyebrow {
+    color: var(--green);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 27px;
+    margin: 8px 0;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.welcome p,
+.description {
+    color: var(--muted);
+}
+
+.welcome-icon {
+    font-size: 48px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.stat-card span {
+    display: block;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 27px;
+    margin-top: 8px;
+}
+
+.active-status {
+    color: var(--green);
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+}
+
+input {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px;
+    background: var(--background);
+    color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: 2px solid var(--green);
+    border-color: transparent;
+}
+
+button {
+    font-family: inherit;
+    font-size: 14px;
+    border: 0;
+    border-radius: 9px;
+    padding: 12px 18px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.primary-button {
+    margin-top: 20px;
+    background: var(--green);
+    color: white;
+    width: 100%;
+}
+
+.primary-button:hover {
+    background: #008F5B;
+}
+
+.secondary-button {
+    background: #1D3325;
+    color: #6FE5AE;
+    border: 1px solid var(--green);
+}
+
+.delete-button {
+    background: #3A1C1C;
+    color: #FFAAAA;
+}
+
+button:hover {
+    filter: brightness(1.12);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.count {
+    color: var(--green);
+    font-size: 13px;
+}
+
+.class-list {
+    display: grid;
+    gap: 14px;
+}
+
+.class-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    background: #0D130F;
+}
+
+.class-card h3 {
+    margin-top: 0;
+    overflow-wrap: anywhere;
+}
+
+.class-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.class-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--muted);
+    padding: 20px 5px;
+}
+
+#message,
+#prepareMessage {
+    color: #6FE5AE;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    padding: 20px 0;
+}
+
+@media (max-width: 600px) {
+    .topbar {
+        padding: 14px 18px;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+
+    .welcome {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .welcome-icon {
+        font-size: 35px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+}

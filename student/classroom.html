@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کلاس آنلاین | کلاسینو</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #080B0A;
+            color: #fff;
+        }
+
+        header {
+            padding: 20px 6%;
+            background: #121A14;
+            border-bottom: 1px solid #26352B;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .brand span {
+            color: #00A86B;
+        }
+
+        .status {
+            color: #00A86B;
+            font-size: 14px;
+        }
+
+        main {
+            max-width: 1100px;
+            width: 92%;
+            margin: 30px auto;
+        }
+
+        h1 {
+            font-size: 25px;
+        }
+
+        .description {
+            color: #A7B0AA;
+            line-height: 1.9;
+        }
+
+        .video-area {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin: 25px 0;
+        }
+
+        .video-box {
+            min-height: 240px;
+            background: #121A14;
+            border: 1px solid #26352B;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        .video-box video {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .video-box p {
+            color: #A7B0AA;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px;
+            background: #121A14;
+            border: 1px solid #26352B;
+            border-radius: 16px;
+        }
+
+        button {
+            padding: 13px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #00A86B;
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #008F5B;
+        }
+
+        .secondary {
+            background: #26352B;
+        }
+
+        #cameraMessage {
+            text-align: center;
+            color: #A7B0AA;
+            line-height: 1.9;
+        }
+
+        @media (max-width: 650px) {
+            .video-area {
+                grid-template-columns: 1fr;
+            }
+
+            .video-box {
+                min-height: 200px;
+            }
+
+            header {
+                padding: 16px 4%;
+            }
+
+            h1 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">کلاسینو<span>.</span></div>
+        <div class="status">● اتاق کلاس</div>
+    </header>
+
+    <main>
+        <h1>به کلاس آنلاین خوش آمدی 🎓</h1>
+        <p class="description">
+            اینجا می‌تونی برای حضور در کلاس آماده بشی.
+        </p>
+
+        <section class="video-area">
+            <div class="video-box">
+                <video id="localVideo" autoplay muted playsinline hidden></video>
+                <div id="cameraPlaceholder">
+                    <div style="font-size:48px">👤</div>
+                    <p>تصویر شما</p>
+                </div>
+            </div>
+
+            <div class="video-box">
+                <div style="font-size:48px">👨‍🏫</div>
+                <p>تصویر معلم</p>
+                <p>هنوز معلم متصل نشده است.</p>
+            </div>
+        </section>
+
+        <section class="controls">
+            <button id="cameraButton">روشن کردن دوربین</button>
+            <button id="micButton" class="secondary">روشن کردن میکروفون</button>
+            <button class="secondary" onclick="location.href='dashboard.html'">
+                بازگشت به پنل
+            </button>
+        </section>
+
+        <p id="cameraMessage" role="status">
+            برای شروع، می‌تونی دوربین خودت رو روشن کنی.
+        </p>
+    </main>
+
+    <script>
+        const cameraButton = document.getElementById("cameraButton");
+        const micButton = document.getElementById("micButton");
+        const localVideo = document.getElementById("localVideo");
+        const cameraPlaceholder = document.getElementById("cameraPlaceholder");
+        const cameraMessage = document.getElementById("cameraMessage");
+
+        let mediaStream = null;
+        let cameraOn = false;
+        let micOn = false;
+
+        cameraButton.addEventListener("click", async () => {
+            try {
+                if (!mediaStream) {
+                    mediaStream = await navigator.mediaDevices.getUserMedia({
+                        video: true,
+                        audio: true
+                    });
+                }
+
+                cameraOn = !cameraOn;
+                mediaStream.getVideoTracks().forEach(track => {
+                    track.enabled = cameraOn;
+                });
+
+                localVideo.srcObject = mediaStream;
+                localVideo.hidden = !cameraOn;
+                cameraPlaceholder.hidden = cameraOn;
+                cameraButton.textContent = cameraOn
+                    ? "خاموش کردن دوربین"
+                    : "روشن کردن دوربین";
+
+                cameraMessage.textContent = cameraOn
+                    ? "دوربین شما روشن است؛ تصویر فقط در همین صفحه نمایش داده می‌شود."
+                    : "دوربین خاموش شد.";
+            } catch (error) {
+                cameraMessage.textContent =
+                    "دسترسی به دوربین ممکن نشد. اجازه‌ی دوربین را در مرورگر بررسی کن.";
+            }
+        });
+
+        micButton.addEventListener("click", async () => {
+            try {
+                if (!mediaStream) {
+                    mediaStream = await navigator.mediaDevices.getUserMedia({
+                        video: true,
+                        audio: true
+                    });
+                }
+
+                micOn = !micOn;
+                mediaStream.getAudioTracks().forEach(track => {
+                    track.enabled = micOn;
+                });
+
+                micButton.textContent = micOn
+                    ? "خاموش کردن میکروفون"
+                    : "روشن کردن میکروفون";
+
+                cameraMessage.textContent = micOn
+                    ? "میکروفون روشن است؛ صدای شما هنوز به معلم منتقل نمی‌شود."
+                    : "میکروفون خاموش شد.";
+            } catch (error) {
+                cameraMessage.textContent =
+                    "دسترسی به میکروفون ممکن نشد. اجازه‌ی میکروفون را در مرورگر بررسی کن.";
+            }
+        });
+
+        window.addEventListener("beforeunload", () => {
+            if (mediaStream) {
+                mediaStream.getTracks().forEach(track => track.stop());
+            }
+        });
+    </script>
+
+</body>
+</html>
